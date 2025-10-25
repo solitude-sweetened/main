@@ -6,8 +6,12 @@
 
 using namespace std;
 
-int main()
-{
-  cout << "Hello world!";
-  return 0;
+class Person {
+private:
+    string name;
+    string surname;
+    vector<int> homework;
+    int exam;
+    double finalGrade;
+
 }
