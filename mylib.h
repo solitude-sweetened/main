@@ -8,6 +8,7 @@
 #include <ctime>
 #include <fstream>
 #include <sstream>
+#include <stdexcept>
 
 using std::string;
 using std::vector;
@@ -22,4 +23,5 @@ using std::right;
 using std::sort;
 using std::accumulate;
 using std::ifstream;
+
 using std::istringstream;
