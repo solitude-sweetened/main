@@ -1,20 +1,6 @@
-#include "mylib.h"
+#include "person.h"
 
-class Person {
-public:
-    string firstName;
-    string lastName;
-    vector<int> homework;
-    int examResult;
-    double finalGrade;
-
-    // --- Functions ---
-    void inputData();
-    void calculateFinalAverage();
-    void printData();
-};
-
-// Input student data
+// enter student data
 void Person::inputData() {
     cout << "Enter first name: ";
     cin >> firstName;
@@ -35,15 +21,27 @@ void Person::inputData() {
     cin >> examResult;
 }
 
-// Calculate final grade (average)
-void Person::calculateFinalAverage() {
-    double avg = accumulate(homework.begin(), homework.end(), 0.0) / homework.size();
-    finalGrade = 0.4 * avg + 0.6 * examResult;
+// Calculate aver. of homework
+double Person::gradeAverage() const {
+    if (homework.empty()) return 0.0;
+    double sum = accumulate(homework.begin(), homework.end(), 0.0);
+    return sum / homework.size();
 }
 
-// Print data
+// Calculate weighted final average (40% homework, 60% exam)
+double Person::calcFinalAverage() const {
+    return gradeAverage() * 0.4 + examResult * 0.6;
+}
+
+// Store result
+void Person::calculateFinalAverage() {
+    finalGrade = calcFinalAverage();
+}
+
+// Print
 void Person::printData() {
     cout << left << setw(12) << firstName
          << setw(12) << lastName
-         << right << setw(10) << fixed << setprecision(2) << finalGrade << endl;
+         << right << setw(10) << fixed << setprecision(2)
+         << finalGrade << endl;
 }
