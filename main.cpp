@@ -1,5 +1,5 @@
 #include "mylib.h"
-#include "person.cpp"
+#include "person.h"
 
 int main() {
     srand(time(nullptr));
@@ -24,3 +24,4 @@ int main() {
 
     return 0;
 }
+
