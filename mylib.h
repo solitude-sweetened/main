@@ -1,0 +1,27 @@
+#include <string>
+#include <vector>
+#include <iostream>
+#include <random>
+#include <algorithm>
+#include <iomanip>
+#include <cstdlib>
+#include <ctime>
+#include <sstream>
+#include <fstream>
+
+using std::accumulate;
+using std::string;
+using std::vector;
+using std::cout;
+using std::cin;
+using std::endl;
+using std::sort;
+using std::left;
+using std::right;
+using std::setw;
+using std::setprecision;
+using std::fixed;
+using std::ifstream;
+using std::cerr;
+using std::ofstream;
+using std::stringstream;
