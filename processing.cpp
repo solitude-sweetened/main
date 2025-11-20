@@ -6,7 +6,9 @@ void splitPassedFailed(
     std::vector<Person>& passed
 ) {
     for (const auto& s : all) {
-        double avg = s.calcFinalAverage();
+
+        double avg = s.averagePath();
+
         if (avg < 5.0)
             failed.push_back(s);
         else
