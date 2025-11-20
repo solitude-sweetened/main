@@ -1,10 +1,12 @@
 README.md (v0.2)
 
 **Overview**
+
 This program processes large student datasets by generating files, reading student records, calculating final grades, sorting the data, splitting students into passed and failed groups, and measuring execution time.
 
 **Features**
--**Automatic Dataset Generation**
+
+**Automatic Dataset Generation**
 The program creates four datasets:
 - 10 000 records
 - 100 000 records
