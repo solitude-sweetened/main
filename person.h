@@ -4,19 +4,33 @@
 #include "mylib.h"
 
 class Person {
+
 public:
     string firstName;
-    string lastName;
+    string surname;
     vector<int> homework;
-    int examResult;
-    double finalGrade;
+    int examResults;
 
-    // --- Functions ---
-    void inputData();
-    double gradeAverage() const;
-    double calcFinalAverage() const;
-    void calculateFinalAverage();
-    void printData();
+    double finalAverage;
+    double finalMedian;
+
+    string calcMethod;
+
+    // Static counter (used internally in person.cpp)
+    static inline int activeCount = 0;
+
+    double gradeAverage();
+    double averagePath();
+    double medianPath();
+
+    vector<int> RandHWGrade(int minimumGrades = 1, int maximumGrades = 10);
+    int randExamResult(int minimumGrade = 1, int maximumGrade = 10);
+
+    double gradeMedian();
+    Person();
+    Person(const Person& other);
+    Person& operator=(const Person& other);
+    ~Person();
 };
 
 #endif
