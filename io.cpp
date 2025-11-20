@@ -1,4 +1,5 @@
 #include "io.h"
+#include "exceptions.h"
 
 void generateDataset(const std::string& filename, size_t count) {
     std::ofstream out(filename);
@@ -58,3 +59,4 @@ std::ostream& operator<<(std::ostream& os, const Person& p) {
 
     return os;
 }
+
