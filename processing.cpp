@@ -7,7 +7,7 @@ void splitPassedFailed(
 ) {
     for (const auto& s : all) {
 
-        double avg = s.averagePath(); //const safe
+        double avg = s.averagePath();
 
         if (avg < 5.0)
             failed.push_back(s);
