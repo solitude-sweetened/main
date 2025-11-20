@@ -16,17 +16,18 @@ public:
 
     string calcMethod;
 
-    // Static counter (used internally in person.cpp)
+    // static instance counter
     static inline int activeCount = 0;
 
     double gradeAverage() const;
     double averagePath() const;
     double medianPath() const;
+    double gradeMedian() const;
 
     vector<int> RandHWGrade(int minimumGrades = 1, int maximumGrades = 10);
     int randExamResult(int minimumGrade = 1, int maximumGrade = 10);
 
-    double gradeMedian() const;
+    // special member functions
     Person();
     Person(const Person& other);
     Person& operator=(const Person& other);
@@ -34,4 +35,3 @@ public:
 };
 
 #endif
-
