@@ -34,7 +34,7 @@ int main() {
             Timer timer;
 
             // Reading
-            timer.start();
+            timer.reset();
 
             ifstream inp(file);
             if (!inp) throw FileOpenError(file);
@@ -69,7 +69,7 @@ int main() {
 
             inp.close();
 
-            double readTime = timer.elapsed();
+            double readTime = timer.elapsedMs();
 
 
             // Sorting
@@ -79,7 +79,7 @@ int main() {
                 return a.firstName < b.firstName;
             });
 
-            double sortTime = timer.elapsed();
+            double sortTime = timer.elapsedMs();
 
 
             // Splitting
@@ -90,18 +90,18 @@ int main() {
 
             splitPassedFailed(students, failed, passed);
 
-            double splitTime = timer.elapsed();
+            double splitTime = timer.elapsedMs();
 
 
             // Writing passed
             timer.reset();
             writeStudents(passed, "passed_" + file);
-            double passedWriteTime = timer.elapsed();
+            double passedWriteTime = timer.elapsedMs();
 
             // Writing failed
             timer.reset();
             writeStudents(failed, "failed_" + file);
-            double failedWriteTime = timer.elapsed();
+            double failedWriteTime = timer.elapsedMs();
 
 
             // Summary output
