@@ -30,10 +30,21 @@ void writeStudents(const std::vector<Person>& students, const std::string& filen
         << std::setw(12) << "Surname"
         << std::right << std::setw(12) << "Final(Avg)"
         << " | " << std::setw(12) << "Final(Med)" << "\n";
+
     out << std::string(12 + 12 + 12 + 3 + 12, '-') << "\n";
 
     for (const auto& s : students)
         out << s << "\n";
 
     out.close();
+}
+
+std::ostream& operator<<(std::ostream& os, const Person& p) {
+    os << std::left << std::setw(12) << p.firstName
+       << std::setw(12) << p.surname
+       << std::right << std::setw(12) << std::fixed << std::setprecision(2) << p.averagePath()
+       << " | "
+       << std::setw(12) << std::fixed << std::setprecision(2) << p.medianPath();
+
+    return os;
 }
