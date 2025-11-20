@@ -28,7 +28,7 @@ int main(){
         Person s;
         int hw1, hw2, hw3, hw4, hw5, exam;
 
-        ss >> s.firstName >> s.lastName >> hw1 >> hw2 >> hw3 >> hw4 >> hw5 >> exam;
+        ss >> s.firstName >> s.surname >> hw1 >> hw2 >> hw3 >> hw4 >> hw5 >> exam;
         if (ss.fail()) continue; 
 
         s.homework = {hw1, hw2, hw3, hw4, hw5};
@@ -54,7 +54,7 @@ int main(){
 
     for (auto &s : students) {
         cout << left << setw(15) << s.firstName
-             << setw(15) << s.lastName
+             << setw(15) << s.surname
              << setw(20) << fixed << setprecision(2) << s.averagePath()
              << setw(20) << fixed << setprecision(2) << s.medianPath() << endl;
     }
