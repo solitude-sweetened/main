@@ -1,27 +1,63 @@
 #include "mylib.h"
-#include "person.h"
+#include "person.cpp"
 
-int main() {
-    srand(time(nullptr));
+int main(){
+    string filename;
+    cout << "Enter the name of the student data file: ";
+    cin >> filename;
 
-    int n;
-    cout << "Enter number of students: ";
-    cin >> n;
-
-    vector<Person> students(n);
-
-    for (int i = 0; i < n; ++i) {
-        cout << "\nStudent #" << i + 1 << ":\n";
-        students[i].inputData();
-        students[i].calculateFinalAverage();
+    ifstream studentFile(filename);
+    if (!studentFile) {
+        cerr << "Couldn't open the file: " << filename << endl;
+        return 1;
     }
 
-    cout << "\nName         Surname      Final(Avg)\n";
-    cout << "-------------------------------------\n";
+    vector<Person> students;
 
-    for (auto &s : students)
-        s.printData();
+    string line;
+    getline(studentFile, line); 
+    getline(studentFile, line); 
+
+    while (getline(studentFile, line)) {
+        if (line.empty()) continue;
+        if (line[0] == '-') continue;
+
+        line.erase(remove(line.begin(), line.end(), '|'), line.end());
+
+        stringstream ss(line);
+        Person s;
+        int hw1, hw2, hw3, hw4, hw5, exam;
+
+        ss >> s.firstName >> s.surname >> hw1 >> hw2 >> hw3 >> hw4 >> hw5 >> exam;
+        if (ss.fail()) continue; 
+
+        s.homework = {hw1, hw2, hw3, hw4, hw5};
+        s.examResults = exam;
+
+        students.push_back(s);
+    }
+
+    if (students.empty()) {
+        cerr << "No student data found in the list." << endl;
+        return 1;
+    }
+
+    sort(students.begin(), students.end(), [](const Person &a, const Person &b) {
+        return a.firstName < b.firstName;
+    });
+
+    cout << left << setw(15) << "Name"
+         << setw(15) << "Surname"
+         << setw(20) << "Final (Avg.)"
+         << setw(20) << "Final (Med.)" << endl;
+    cout << string(70, '-') << endl;
+
+    for (auto &s : students) {
+        cout << left << setw(15) << s.firstName
+             << setw(15) << s.surname
+             << setw(20) << fixed << setprecision(2) << s.averagePath()
+             << setw(20) << fixed << setprecision(2) << s.medianPath() << endl;
+    }
 
     return 0;
 }
-
